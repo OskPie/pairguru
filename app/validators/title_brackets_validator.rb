@@ -2,13 +2,9 @@ class  TitleBracketsValidator < ActiveModel::Validator
   def validate(record)
     string = record.title
 
-    if !brackets_validation?(string)
+     if !brackets_validation?(string)
       record.errors.add(string, "has invalid title")
     end
-  end
-
-  def empty_brackets(string)
-    %w[ () [] {} ].none?(&string.method(:include?))
   end
 
   def brackets_validation?(string)
