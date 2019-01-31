@@ -7,12 +7,6 @@ class MoviesController < ApplicationController
 
   def show
     @movie = Movie.includes(:comments).find(params[:id])
-    @comment = Comment.new
-    @comment.movie_id = @movie.id
-    if @comment.save
-      flash[:success] = "Comment created!"
-      redirected_to :back
-    end
   end
 
   def send_info
