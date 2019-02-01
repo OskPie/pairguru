@@ -6,4 +6,5 @@
 %br/
 = render 'comments/comment_form'
 %br/
-= render @movie.comments
+#comments{"data-movie-id" => "#{@movie.id}"}
+  = render @movie.comments
