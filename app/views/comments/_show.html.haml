@@ -10,5 +10,8 @@
         .row
           .col-md-1
           .col-md-11
-            = comment.user.email
-            = comment.content
+            %span.text-info
+              = comment.user.email
+            %span.text-muted
+              = comment.content
+              = link_to 'Delete comment', movie_comment_path(comment.movie, comment), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

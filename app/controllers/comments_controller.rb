@@ -23,8 +23,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = Comment.find(params[:id])
+    @movie = @comment.movie
     @comment.destroy
-    redirect_to comments_url, notice: 'Comment was successfully destroyed.'
+    redirect_to '/movies', notice: 'Comment was successfully destroyed.'
   end
 
   private
