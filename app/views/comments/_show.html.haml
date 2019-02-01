@@ -10,9 +10,10 @@
         .row
           .col-md-1
           .col-md-11
+            %hr/
             %span.text-info
               = comment.user.email
             %span.text-muted
               = comment.content
               - if current_user && current_user == comment.user
-                = link_to 'Delete comment', movie_comment_path(comment.movie, comment), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+                = link_to 'Delete comment', movie_comment_path(comment.movie, comment), class: 'btn btn-danger btn-sm', method: :delete, data: { confirm: 'Are you sure?' }
