@@ -1,0 +1,14 @@
+%br/
+%p
+  %b Comments:
+  = @movie.comments.count
+%br/
+- @movie.comments.each do |comment|
+  .comment-card
+    .card
+      .card-block
+        .row
+          .col-md-1
+          .col-md-11
+            = comment.user.email
+            = comment.content
