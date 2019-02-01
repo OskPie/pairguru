@@ -1,6 +1,8 @@
-Rails.application.routes.draw do
+sRails.application.routes.draw do
   resources :comments
   devise_for :users
+
+  mount ActionCable.server => '/cable'
 
   root "home#welcome"
   resources :genres, only: :index do
