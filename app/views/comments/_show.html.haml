@@ -14,4 +14,5 @@
               = comment.user.email
             %span.text-muted
               = comment.content
-              = link_to 'Delete comment', movie_comment_path(comment.movie, comment), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }
+              - if current_user && current_user == comment.user
+                = link_to 'Delete comment', movie_comment_path(comment.movie, comment), class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }

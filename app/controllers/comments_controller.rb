@@ -1,20 +1,20 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-
+  before_action :authenticate_user!
 
   def new
     @comment = Comment.new
   end
 
   def create
-    @comment = Comment.new
     @movie = Movie.find(params[:movie_id])
-    @comment = @movie.comments.new(params[:comment_params])
+    @comment = @movie.comments.create(comment_params.merge(user_id: current_user.id))
+    @comment.user_id = current_user.id
 
     if @comment.save
-      redirect_to @movie, notice: 'Comment was successfully created.'
+      redirect_to @movie
     else
-      redirect_to '/movies'
+      flash.now[:danger] = "error"
     end
   end
 
