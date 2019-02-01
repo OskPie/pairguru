@@ -1,5 +1,7 @@
-= form_for @comment do |f|
+= form_for [@movie, @comments] do |f|
   .form-group
     = f.label :content
     = f.text_area :content, class: 'form-control'
+    = f.hidden_field :movie_id, :value => @movie.id
+  .actions
   = f.submit 'Post Comment', class: 'btn btn-primary'

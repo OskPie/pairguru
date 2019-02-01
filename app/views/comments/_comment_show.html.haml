@@ -1,0 +1,9 @@
+.comment-card
+  .card
+    .card-block
+      .row
+        .col-md-1
+        .col-md-11
+          = form_for @comment do |c"
+            f.content :content
+            f.hidde_field :movie_id, value: @movie.id
